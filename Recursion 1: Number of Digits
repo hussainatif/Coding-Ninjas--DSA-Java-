@@ -1,0 +1,13 @@
+public class Solution {
+
+    static int ans=0;
+	public static int count(int num){
+		//Write your code here
+         if(num!=0)
+	    {
+	        ans++;
+	        count(num/10);
+	    }
+	    return ans;
+    }
+}
