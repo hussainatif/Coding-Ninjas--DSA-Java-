@@ -1,0 +1,36 @@
+public class Solution {
+
+	public static int[] allIndexes(int input[], int x) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		return ans(input,x,0);
+	}
+	public static int[] ans(int input[],int x,int start)
+    {
+        int n=input.length;
+        if(start==n)
+        {
+           int[] newarr = new int[0]; // empty array
+        	return newarr;
+        }
+       int[] smallIndex = ans(input, x,start + 1);
+        if (input[start] == x) 
+        {
+            int[] myAns = new int[smallIndex.length + 1];
+            myAns[0] = start;
+            for (int i = 0; i < smallIndex.length; i++) 
+            {
+                 myAns[i + 1] = smallIndex[i];
+            }
+            return myAns;
+        }
+        else 
+        {
+            return smallIndex;
+		}
+    }
+}
