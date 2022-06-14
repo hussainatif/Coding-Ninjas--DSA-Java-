@@ -1,0 +1,35 @@
+public class solution {
+
+	// Return a 2D array that contains all the subsets
+	public static int[][] subsets(int input[]) {
+		// Write your code here
+      return subsets(input,0);
+		}
+
+        
+        public static int[][] subsets(int input[], int si)
+        {
+              if(si==input.length) {
+			return new int[1][0];
+		}
+        int[][] output= subsets(input,si+1);
+		int[][] ans= new int[2*output.length][];
+		int k=0;
+		for(int i=0; i<output.length; i++) {
+			ans[k]= new int[output[i].length];
+			for(int j=0; j<output[i].length; j++) {
+				ans[k][j]= output[i][j];
+			}
+			k++;
+        }
+            for(int i=0; i<output.length; i++) {
+			ans[k]= new int[output[i].length+1];
+			ans[k][0]= input[si];
+			for(int j=0; j<output[i].length; j++) {
+				ans[k][j+1]= output[i][j];
+			}
+			k++;
+		}
+			return ans;
+	}
+}
