@@ -1,0 +1,25 @@
+public class solution {
+
+	// element - number to be searched
+	public static int binarySearch(int input[], int element) {
+		// Write your code here    
+        return Binary(input,0,input.length-1,element);
+	}
+    
+     public static int Binary(int input[],int l,int r, int element)
+    {
+         if (r < l)
+             return -1;
+             
+        int mid = l + (r - l) / 2;
+        if(input[mid]<element)
+            return Binary(input,mid+1,r,element);
+         
+        else if(input[mid]>element)
+            return Binary(input,l,mid-1,element);
+
+        else 
+            return mid;
+    }
+    
+}
