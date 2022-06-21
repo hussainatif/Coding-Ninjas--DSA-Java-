@@ -1,0 +1,51 @@
+import java.util.Arrays;
+
+public class Solution {	
+
+	public static int tripletSum(int[] arr, int num) {
+
+        	Arrays.sort(arr);
+        int n=0;
+        for(int i=0;i<arr.length;i++){
+            int st=i+1;
+            int end=arr.length-1;
+            int sum=num-arr[i];
+            while(st<end){
+                if(arr[st]+arr[end]<sum){
+                    st++;
+                }
+                else if(arr[st]+arr[end]>sum){
+                    end--;
+                }
+                else{
+                    int count1=0,count2=0; 
+                    for(int ptr=st;ptr<=end;ptr++) { 
+                        if(arr[ptr] == arr[st]) 
+                            count1++; 
+                        else 
+                            break; 
+                    } 
+                    
+                    for(int ptr= end;ptr>=st;ptr--) { 
+                        if(arr[ptr] == arr[end]) 
+                            count2++; 
+                        else 
+                            break; 
+                    } 
+                    
+                    int combinations = count1*count2; 
+                    if(arr[st] == arr[end]) 
+                        combinations = ((end-st+1)*(end-st))/2; 
+                    n+=combinations;
+                    st=st +count1; 
+                    end=end - count2; 
+            	}
+        	}
+            
+            
+        	
+        //Your code goes here
+		}
+        return n;
+    }
+}
