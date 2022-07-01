@@ -1,0 +1,25 @@
+import java.util.Stack;
+public class Solution {
+
+	public static int[] stockSpan(int[] price) {
+		//Your code goes here
+        int[]span = new int[price.length];
+  
+  //The stack stores last day with a stock greater than this day 
+  		Stack<Integer>days = new Stack<Integer>();
+  
+  		days.push(0);
+ 		span[0] = 1;
+  		for(int i = 1 ; i < price.length ; i++){
+    
+    while(!days.isEmpty() && price[days.peek()]<price[i]){
+        days.pop();
+    }
+	span[i] = days.isEmpty()?(i+1):i-days.peek();
+	days.push(i);
+  }
+  
+  return span;
+	}
+
+}
