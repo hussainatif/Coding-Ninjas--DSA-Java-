@@ -1,0 +1,72 @@
+public class Queue {
+	
+	//Define the data members
+    Node head, tail;
+    int size;
+
+
+	public Queue() {
+		//Implement the Constructor
+         head=null;
+         tail=null;
+         size=0;
+	}
+	
+
+
+	/*----------------- Public Functions of Stack -----------------*/
+
+
+	public int getSize() { 
+		//Implement the getSize() function
+                return size;
+
+    }
+
+
+    public boolean isEmpty() { 
+    	//Implement the isEmpty() function
+               return head==null;
+
+    }
+
+
+    public void enqueue(int data) {
+    	//Implement the enqueue(element) function
+        Node node=new Node(data);
+        if(isEmpty()){
+            head=node;
+            tail=node;
+        }
+        else{
+            tail.next=node;
+            tail=node;
+        }
+        size++;
+    }
+
+
+    public int dequeue() {
+    	//Implement the dequeue() function
+        if(isEmpty())
+            return -1;
+        Node temp=head;
+        head=head.next;
+        
+        if(head==null){
+            tail=null;
+        }
+        size--;
+        int x=temp.data;
+        return x;
+    }
+
+
+    public int front() {
+    	//Implement the front() function
+        if(isEmpty()){
+            return -1;
+        }
+        return head.data;
+    }
+}
