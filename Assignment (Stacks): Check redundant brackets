@@ -1,0 +1,56 @@
+import java.util.Stack;
+public class Solution {
+
+	public static boolean checkRedundantBrackets(String s) {
+		//Your code goes here
+        Stack<Character> st = new Stack<Character>();
+
+ 
+
+ for(int i = 0; i< s.length(); i++){
+
+  Character ch = s.charAt(i); // extract char from string  
+
+   
+
+  if(ch == '(' || ch == '+' || ch == '-' || ch == '*' || ch == '/'){// if any of this chars then push in stcak
+
+   st.push(ch);
+
+  }
+
+  else{
+
+   if(ch == ')'){
+
+    boolean isRedundant = true; // by default true
+
+    while(st.peek() != '('){ // loop till next (, after poping unwanted operators between ( and )
+
+     char top = st.peek(); // extract cur top
+
+     if(top == '+' || top == '-' || top == '*' || top == '/'){ // compare top with this symbol if equal mean this symbol present between ( and ) so no redundant
+
+      isRedundant = false;
+
+     }
+
+     st.pop(); // pop that operators  
+
+    }
+
+    if(isRedundant == true) // if redundant is true then return from here
+
+     return true;
+
+    st.pop(); // else remove the ( for balancing current ch  
+
+   }
+
+  }
+
+ }
+
+ return false;
+	}
+}
